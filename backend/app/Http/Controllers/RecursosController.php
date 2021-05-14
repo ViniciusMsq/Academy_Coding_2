@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recurso;
 use Illuminate\Http\Request;
 
 class RecursosController extends Controller
@@ -13,17 +14,7 @@ class RecursosController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Recurso::all();
     }
 
     /**
@@ -34,7 +25,7 @@ class RecursosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        recurso::create($request->all());
     }
 
     /**
@@ -49,17 +40,6 @@ class RecursosController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -68,7 +48,7 @@ class RecursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Recurso::findOrFail($id)->update($request->all());
     }
 
     /**
@@ -79,6 +59,6 @@ class RecursosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Recurso::findOrFail($id)->delete();
     }
 }
