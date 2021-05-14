@@ -14,6 +14,7 @@ class Atividade extends Model
 
     protected $fillable = [
         'id_projeto',
+        'id_recurso',
         'titulo',
         'descricao',
         'dt_inicial',

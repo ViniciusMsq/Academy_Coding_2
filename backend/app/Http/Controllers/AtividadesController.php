@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Atividade;
 use Illuminate\Http\Request;
 
 class AtividadesController extends Controller
@@ -13,17 +14,7 @@ class AtividadesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Atividade::all();
     }
 
     /**
@@ -34,7 +25,7 @@ class AtividadesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Atividade::create($request->all());
     }
 
     /**
@@ -49,17 +40,6 @@ class AtividadesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -68,7 +48,7 @@ class AtividadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Atividade::findOrFail($id)->update($request->all());
     }
 
     /**
@@ -79,6 +59,6 @@ class AtividadesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Atividade::findOrFail($id)->delete();
     }
 }
