@@ -1,0 +1,35 @@
+create table equipes(
+	id int not null GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	descricao varchar(100) not null
+)
+
+create table recursos(
+	id int not null GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	id_equipe int,
+	nome varchar(120) not null,
+	email varchar(120) not null,
+	telefone varchar(13) not null,
+	login varchar(50) not null,
+	senha varchar(12) not null,
+	CONSTRAINT fk_equipe FOREIGN KEY(id_equipe) REFERENCES equipes(id)
+)
+
+create table projetos(
+	id int not null GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	id_recurso int not null,
+	nome varchar(100) not null,
+	descricao text,
+	dt_inicial date not null,
+	prazo int,
+	CONSTRAINT fk_recurso FOREIGN KEY(id_recurso) REFERENCES recursos(id)
+)
+
+create table atividades(
+	id int not null GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	id_projeto int not null,
+	titulo varchar(50) not null,
+	descricao text not null,
+	dt_inicial date not null,
+	dt_entrega date not null,
+	CONSTRAINT fk_projeto FOREIGN KEY(id_projeto) REFERENCES projetos(id)
+)
