@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title _msthash="149916" _msttexthash="699920" _msthidden="1">Signin Template for Bootstrap</title>
+
+  <base href="/login">
+</head>
+
+<body class="text-center bg-light">
+  <br><br><br><br>
+  <div class="d-flex justify-content-center">
+    <form class="form-signin">
+      <img class="mb-4" src="../../assets/login.svg" alt="" width="100" height="100">
+      
+      <h2 class="h3 mb-3 font-weight-normal">Por favor, faça seu login.</h2>
+      <hr>
+      <input type="text" id="login" name="login" class="form-control" placeholder="login" autofocus="" [(ngModel)]="usuario.login">
+      <input style="margin-top: 10px;" type="password" id="senha" name="senha" class="form-control" placeholder="senha" [(ngModel)]="usuario.senha">
+      <br>
+      <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="fazerLogin()">Entrar</button>
+    </form>
+  </div>
+</body>
+</html>
+
