@@ -14,6 +14,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CadRecursosComponent } from './cad-recursos/cad-recursos.component';
+import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     FooterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    CadRecursosComponent,
+    CadEquipesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   providers: [
     HttpClientModule,
     AuthService,
+    DashboardComponent,
     AuthGuard
   ],
   bootstrap: [AppComponent]

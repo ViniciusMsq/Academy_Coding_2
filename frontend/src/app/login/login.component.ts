@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   listarRecursos(){
     this.authService.listarRecursos().subscribe(recursos => {
       this.recursos = recursos;
-      console.log(this.recursos);
     }, err =>{
       console.log("erro ao listar recursos", err);
     })

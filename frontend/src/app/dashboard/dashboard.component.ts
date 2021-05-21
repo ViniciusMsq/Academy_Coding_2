@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
   id = this.route.snapshot.params.id;
-  nome = this.route.snapshot.params.nome;
 
 
   ngOnInit(): void {

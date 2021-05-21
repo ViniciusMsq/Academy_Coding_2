@@ -9,7 +9,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" style="cursor: pointer;">
+      <a class="navbar-brand" style="cursor: pointer;" (click)="dashboardRoute()">
         <img src="../../assets/smartbreederWhiteLogo-p-500.png" height="40" width="200" alt="" class="d-inline-block">
       </a>
       <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-bs-toggle="collapse"
@@ -24,7 +24,7 @@
               Gestão
             </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><button class="dropdown-item">Equipes</button></li>
+              <li><button class="dropdown-item" (click)="cadEquipesRoute()">Equipes</button></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -48,5 +48,4 @@
     </div>
   </nav>
 </body>
-
 </html>

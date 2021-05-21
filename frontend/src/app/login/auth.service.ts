@@ -40,7 +40,7 @@ export class AuthService {
         }
 
         this.mostrarMenuEmitter.emit(true);
-        this.router.navigate(['/dashboard', recursos[i].id, recursos[i].nome]);
+        this.router.navigate(['/dashboard', recursos[i].id]);
         break;
       }else{
         this.usuarioAutenticado = false;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AuthService } from '../login/auth.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class NavBarComponent implements OnInit {
   mostrarMenu:boolean = false;
   gestor:boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private dashboard: DashboardComponent) { }
 
   ngOnInit(): void {
     this.authService.mostrarMenuEmitter.subscribe(mostrar => 
@@ -22,6 +23,13 @@ export class NavBarComponent implements OnInit {
     this.authService.mostrarBotaoEmitter.subscribe(mostrar =>
       this.gestor = mostrar
     );
+  }
+
+  dashboardRoute(){
+    this.router.navigate(['/dashboard']);
+  }
+  cadEquipesRoute(){
+    this.router.navigate(['/cadastrar-equipes']);
   }
 
 }
