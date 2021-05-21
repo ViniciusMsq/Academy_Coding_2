@@ -11,12 +11,16 @@ export class NavBarComponent implements OnInit {
 
   isCollapsed = true;
   mostrarMenu:boolean = false;
+  gestor:boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.mostrarMenuEmitter.subscribe(mostrar => 
       this.mostrarMenu = mostrar
+    );
+    this.authService.mostrarBotaoEmitter.subscribe(mostrar =>
+      this.gestor = mostrar
     );
   }
 
