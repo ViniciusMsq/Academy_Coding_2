@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projeto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjetosController extends Controller
 {
@@ -60,6 +61,10 @@ class ProjetosController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('atividades')
+        ->where('id_projeto','=',$id)
+        ->delete();
+        
         Projeto::findOrFail($id)->delete();
     }
 }

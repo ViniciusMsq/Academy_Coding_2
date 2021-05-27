@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EquipesController extends Controller
 {
@@ -59,6 +60,10 @@ class EquipesController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('recursos')
+        ->where('id_equipe','=',$id)
+        ->delete();
+
         Equipe::findOrFail($id)->delete();
     }
 }

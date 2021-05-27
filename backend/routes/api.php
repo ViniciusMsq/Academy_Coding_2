@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/equipes', [EquipesController::class, 'index']);
 Route::post('/equipes', [EquipesController::class, 'store']);
 Route::put('/equipes/{id}', [EquipesController::class, 'update']);
-Route::delete('/equipes/{id}', [EquipesController::class, 'destroy']);
+//Route::delete('/equipes/{id}', [EquipesController::class, 'destroy']);
 
 //Rotas recursos
 Route::get('/recursos', [RecursosController::class, 'index']);
 Route::post('/recursos', [RecursosController::class, 'store']);
 Route::put('/recursos/{id}', [RecursosController::class, 'update']);
-Route::delete('/recursos/{id}', [RecursosController::class, 'destroy']);
+//Route::delete('/recursos/{id}', [RecursosController::class, 'destroy']);
 
 //Rotas Projetos
 Route::get('/projetos', [ProjetosController::class, 'index']);

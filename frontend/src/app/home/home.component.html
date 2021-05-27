@@ -10,8 +10,8 @@
 </head>
 
 <body class="bg-light">
-    <div class="container">
-        <div class="jumbotron text-center" style="margin-top: 5rem;">
+    <div class="container" style="position: relative;">
+        <div class="jumbotron text-center" style="margin-top: 5rem; padding-bottom: 100px;">
             <h1 class="display-4" style="align-items: center;">Cronograma e Gerenciamento de Atividades</h1>
             <br>
             <p class="lead">O projeto deverá ser desenvolvido em linguagem web (Ex: JS, Php, Python), a
@@ -19,12 +19,13 @@
                 atividades e o gerenciamento destas atividades, propondo tornar a criação de cronogramas
                 e gerenciamento de atividades muito mais dinâmica e automatizado, contendo prazos de
                 expiração, envio de relatórios e também alertas para o usuário.</p>
-            <hr />
+            <hr/>
             <p>Aplicação desenvolvida para a segunda edição do ACADEMY CODING</p>
+            <div class="text-center">
+                <p><a class="btn btn-lg btn-dark " (click)="loginRoute()">Ir para projeto</a></p>
+            </div>
         </div>
-        <div class="text-center" style="margin-top: 4rem;">
-            <a class="btn btn-lg btn-dark " (click)="loginRoute()">Ir para projeto</a>
-        </div>
+        
     </div>
     <app-footer> </app-footer>
 </body>

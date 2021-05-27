@@ -28,13 +28,21 @@ export class CadEquipesComponent implements OnInit {
   }
 
   cadastrar(){
-    console.log(this.equipe);
 
     this.equipeService.cadastrarEquipe(this.equipe).subscribe(equipe =>{
       this.equipe = new EquipeModel();
       this.listarEquipes();
     }, err => {
       console.log("erro ao cadastrar equipe", err);
+    })
+  }
+
+  atualizar(id:Number){
+    this.equipeService.atualizarEquipe(id, this.equipe).subscribe(equipe =>{
+      this.equipe = new EquipeModel();
+      this.listarEquipes();
+    }, err =>{
+      console.log("Erro ao atualizar equipe", err);
     })
   }
 }

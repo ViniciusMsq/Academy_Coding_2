@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
+import { CadRecursosComponent } from './cad-recursos/cad-recursos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +12,9 @@ const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"dashboard/:id", component: DashboardComponent, canActivate:[AuthGuard]},
   {path:"dashboard", component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:"cadastrar-equipes", component: CadEquipesComponent} 
+  {path:"cadastrar-equipes", component: CadEquipesComponent},
+  {path:"cadastrar-recursos", component: CadRecursosComponent} 
+
 
 
 

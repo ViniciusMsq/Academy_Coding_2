@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recurso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecursosController extends Controller
 {
@@ -14,9 +15,13 @@ class RecursosController extends Controller
      */
     public function index()
     {
-        return Recurso::all();
+        //return Recurso::all();
+        return DB::table('recursos')
+        ->join('equipes', 'recursos.id_equipe', '=', 'equipes.id')
+        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha')
+        ->orderBy('recursos.nome', 'asc')
+        ->get();
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -59,6 +64,14 @@ class RecursosController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('atividades')
+        ->where('id_recurso','=', $id)
+        ->delete();
+
+        DB::table('projetos')
+        ->where('id_recurso','=',$id)
+        ->delete();
+
         Recurso::findOrFail($id)->delete();
     }
 }
