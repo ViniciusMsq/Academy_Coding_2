@@ -20,8 +20,9 @@ export class EquipesService {
   atualizarEquipe(id: any, equipe:EquipeModel): Observable<any>{
     return this.http.put(`${environment.host}/equipes/`.concat(id), equipe);
   }
-  deletarEquipe(id: any): Observable<any>{
+  
+ /*  deletarEquipe(id: any): Observable<any>{
     return this.http.delete(`${environment.host}/equipes/`.concat(id));
-  }
+  } */
 }
 

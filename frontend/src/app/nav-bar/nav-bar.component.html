@@ -28,15 +28,15 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><button class="dropdown-item">Recursos</button></li>
+              <li><button class="dropdown-item" (click)="cadRecursosRoute()">Recursos</button></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><button class="dropdown-item">Projetos</button></li>
+              <li><button class="dropdown-item" (click)="cadProjetosRoute()">Projetos</button></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><button class="dropdown-item">Atividades</button></li>
+              <li><button class="dropdown-item" (click)="cadAtividadesRoute()">Atividades</button></li>
             </ul>
           </li>
           <li *ngIf="gestor" class="nav-item">

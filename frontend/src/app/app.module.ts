@@ -16,6 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CadRecursosComponent } from './cad-recursos/cad-recursos.component';
 import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import { CadProjetosComponent } from './cad-projetos/cad-projetos.component';
+import { CadAtividadesComponent } from './cad-atividades/cad-atividades.component';
 
 
 @NgModule({
@@ -27,14 +31,18 @@ import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
     LoginComponent,
     DashboardComponent,
     CadRecursosComponent,
-    CadEquipesComponent
+    CadEquipesComponent,
+    CadProjetosComponent,
+    CadAtividadesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [
     HttpClientModule,

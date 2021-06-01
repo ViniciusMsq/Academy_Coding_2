@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { BlockLike } from 'typescript';
 import { Usuario } from './usuario.model';
 
@@ -24,7 +25,7 @@ export class AuthService {
 
   }
   listarRecursos(): Observable<any>{
-    return this.http.get("http://127.0.0.1:8000/api/recursos");
+    return this.http.get(`${environment.host}/recursos`);
   }
   fazerLogin(usuario:Usuario, recursos:Array<any>){
     for(let i=0; i< recursos.length; i++){
@@ -40,7 +41,7 @@ export class AuthService {
         }
 
         this.mostrarMenuEmitter.emit(true);
-        this.router.navigate(['/dashboard', recursos[i].id]);
+        this.router.navigate(['/dashboard', recursos[i].id, recursos[i].descricao]);
         break;
       }else{
         this.usuarioAutenticado = false;

@@ -31,5 +31,14 @@ export class NavBarComponent implements OnInit {
   cadEquipesRoute(){
     this.router.navigate(['/cadastrar-equipes']);
   }
+  cadRecursosRoute(){
+    this.router.navigate(['/cadastrar-recursos']);
+  }
+  cadProjetosRoute(){
+    this.router.navigate(['/cadastrar-projetos']);
+  }
+  cadAtividadesRoute(){
+    this.router.navigate(['/cadastrar-atividades']);
+  }
 
 }

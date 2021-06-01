@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CadAtividadesComponent } from './cad-atividades/cad-atividades.component';
 import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
+import { CadProjetosComponent } from './cad-projetos/cad-projetos.component';
 import { CadRecursosComponent } from './cad-recursos/cad-recursos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -10,13 +12,12 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path:"", component: HomeComponent},
   {path:"login", component: LoginComponent},
-  {path:"dashboard/:id", component: DashboardComponent, canActivate:[AuthGuard]},
   {path:"dashboard", component: DashboardComponent, canActivate:[AuthGuard]},
+  {path:"dashboard/:id/:equipe", component: DashboardComponent, canActivate:[AuthGuard]},
   {path:"cadastrar-equipes", component: CadEquipesComponent},
-  {path:"cadastrar-recursos", component: CadRecursosComponent} 
-
-
-
+  {path:"cadastrar-recursos", component: CadRecursosComponent},
+  {path:"cadastrar-projetos", component: CadProjetosComponent},
+  {path:"cadastrar-atividades", component: CadAtividadesComponent} 
 
 ];
 

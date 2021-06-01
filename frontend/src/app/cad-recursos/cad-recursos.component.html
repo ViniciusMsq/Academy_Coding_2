@@ -2,66 +2,97 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Recursos</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Recursos</title>
 
-    <base href="/cadastrar-recursos">
+  <base href="/cadastrar-recursos">
 </head>
 
 <body class="bg-light">
-    <hr class="dropdown-divider">
+  <hr class="dropdown-divider">
 
-    <h2 class="d-flex justify-content-center">Cadastrar</h2>
+  <h2 class="d-flex justify-content-center">Cadastrar Recursos</h2>
 
+  <div class="container-fluid">
     <div class="container">
+      <div style="margin-left: 25%; margin-right: 25%;">
         <form class="row g-3">
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress2" class="form-label">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="col-md-4">
-              <label for="inputState" class="form-label">State</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
+          <div class="col-12">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Seu nome" [(ngModel)]="recurso.nome">
+          </div>
+          <div class="col-md-6">
+            <label for="inputLogin" class="form-label">Login</label>
+            <input type="text" class="form-control" id="inputLogin" name="inputLogin" placeholder="Ex: mesquini"[(ngModel)]="recurso.login">
+          </div>
+          <div class="col-md-6">
+            <label for="inputSenha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="inputSenha" name="inputSenha" placeholder="Ex: 123654" [(ngModel)]="recurso.senha">
+          </div>
+          <div class="col-12">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="example@email.com" [(ngModel)]="recurso.email">
+          </div>
+          <div class="col-md-6">
+            <label for="inputTelefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="inputTelefone" name="inputTelefone" placeholder="(99)99999-9999" [(ngModel)]="recurso.telefone">
+          </div>  
+          <div class="col-md-6">
+            <div>
+              <label for="inputState" class="form-label">Equipe</label>
+              <select id="inputState" name="inputState" class="form-select" [(ngModel)]="recurso.id_equipe">
+                <option value=6 selected>Sem Equipe</option>
                 <option>...</option>
               </select>
             </div>
-            <div class="col-md-2">
-              <label for="inputZip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
+          </div>
+          
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-dark" (click)="cadastrar()">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br><br>
+
+    <hr class="dropdown-divider">
+
+    <h2 class="d-flex justify-content-center">Recursos</h2>
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Equipe</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Login</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recurso of recursos">
+          <th scope="row">{{recurso.id}}</th>
+          <td>{{recurso.nome}}</td>
+          <td>{{recurso.descricao}}</td>
+          <td>{{recurso.email}}</td>
+          <td>{{recurso.telefone}}</td>
+          <td>{{recurso.login}}</td>
+
+          <td class="overflow-hidden"> 
+            <div ngbDropdown container="body">
+              <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>
+              <div ngbDropdownMenu>
+                <button ngbDropdownItem (click)="atualizar(recurso.id)">Atualizar</button>
               </div>
             </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-          </form>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
-
 </html>
