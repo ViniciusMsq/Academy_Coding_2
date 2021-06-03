@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecursosService } from '../cad-recursos/recursos.service';
 import { ProjetoModel } from './projeto.model';
 import { ProjetosService } from './projetos.service';
 
@@ -12,10 +13,22 @@ export class CadProjetosComponent implements OnInit {
   projetos: Array<any> = new Array();
   projeto: ProjetoModel = new ProjetoModel();
 
-  constructor(private projetoService: ProjetosService) { }
+  gestores : Array<any> = new Array();
+
+  constructor(private projetoService: ProjetosService, private recursoService: RecursosService) { }
 
   ngOnInit(): void {
     this.listarProjetos();
+    this.listarGestores();
+  }
+
+  listarGestores(){
+    this.recursoService.listarGestores().subscribe(gestores =>{
+      this.gestores = gestores;
+    }), err => {
+      console.log("erro ao listar recursos", err);
+      
+    }
   }
 
   listarProjetos(){

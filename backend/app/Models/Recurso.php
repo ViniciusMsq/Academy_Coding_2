@@ -18,6 +18,7 @@ class Recurso extends Model
         'email',
         'telefone',
         'login',
-        'senha'
+        'senha',
+        'atividades_concluidas'
     ];
 }

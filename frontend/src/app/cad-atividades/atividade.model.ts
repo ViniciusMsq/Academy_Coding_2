@@ -5,4 +5,5 @@ export class AtividadeModel{
     descricao: string;
     dt_inicial: string;
     dt_entrega: string;
+    status:string;
 }

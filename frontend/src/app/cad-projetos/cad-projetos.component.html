@@ -43,8 +43,7 @@
             <div>
               <label for="inputState" class="form-label">Gestor</label>
               <select id="inputState" name="inputState" class="form-select" [(ngModel)]="projeto.id_recurso">
-                <option value=1 selected>Gestor</option>
-                <option>...</option>
+                <option *ngFor="let gestor of gestores" value={{gestor.id}}>{{gestor.nome}}</option>
               </select>
             </div>
           </div>

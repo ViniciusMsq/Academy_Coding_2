@@ -5,4 +5,5 @@ export class RecursoModel{
     telefone: string;
     login:string;
     senha:string;
+    atividades_concluidas:number;
 }

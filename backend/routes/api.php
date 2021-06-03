@@ -26,8 +26,11 @@ Route::put('/equipes/{id}', [EquipesController::class, 'update']);
 
 //Rotas recursos
 Route::get('/recursos', [RecursosController::class, 'index']);
+Route::get('/gestores', [RecursosController::class, 'getGestores']);
+Route::get('/naogestores', [RecursosController::class, 'getNotGestores']);
 Route::post('/recursos', [RecursosController::class, 'store']);
 Route::put('/recursos/{id}', [RecursosController::class, 'update']);
+Route::put('/recursosAtividades/{id}', [RecursosController::class, 'somando']);
 //Route::delete('/recursos/{id}', [RecursosController::class, 'destroy']);
 
 //Rotas Projetos
@@ -38,6 +41,7 @@ Route::delete('/projetos/{id}', [ProjetosController::class, 'destroy']);
 
 //Rotas Atividades
 Route::get('/atividades', [AtividadesController::class, 'index']);
+Route::get('/atividades/{id}', [AtividadesController::class, 'showAtividadesRecurso']);
 Route::post('/atividades', [AtividadesController::class, 'store']);
 Route::put('/atividades/{id}', [AtividadesController::class, 'update']);
 Route::delete('/atividades/{id}', [AtividadesController::class, 'destroy']);

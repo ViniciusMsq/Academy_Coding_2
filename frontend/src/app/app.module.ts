@@ -12,7 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CadRecursosComponent } from './cad-recursos/cad-recursos.component';
 import { CadEquipesComponent } from './cad-equipes/cad-equipes.component';
@@ -20,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import { CadProjetosComponent } from './cad-projetos/cad-projetos.component';
 import { CadAtividadesComponent } from './cad-atividades/cad-atividades.component';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CadAtividadesComponent } from './cad-atividades/cad-atividades.componen
     CadRecursosComponent,
     CadEquipesComponent,
     CadProjetosComponent,
-    CadAtividadesComponent
+    CadAtividadesComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,10 @@ import { CadAtividadesComponent } from './cad-atividades/cad-atividades.componen
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    NgApexchartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HttpClientModule,

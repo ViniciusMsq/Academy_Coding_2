@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Atividade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AtividadesController extends Controller
 {
@@ -34,9 +35,14 @@ class AtividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showAtividadesRecurso($id)
     {
-        //
+        return DB::table('atividades')
+        ->join('projetos', 'atividades.id_projeto', '=', 'projetos.id')
+        ->select('atividades.id', 'projetos.nome', 'atividades.titulo', 'atividades.descricao', 'atividades.dt_inicial', 'atividades.dt_entrega', 'atividades.status')
+        ->where('atividades.id_recurso', '=', $id)
+        ->orderBy('atividades.status', 'asc')
+        ->get();
     }
 
     /**

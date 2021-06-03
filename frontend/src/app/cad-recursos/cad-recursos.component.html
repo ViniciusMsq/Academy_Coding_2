@@ -43,8 +43,7 @@
             <div>
               <label for="inputState" class="form-label">Equipe</label>
               <select id="inputState" name="inputState" class="form-select" [(ngModel)]="recurso.id_equipe">
-                <option value=6 selected>Sem Equipe</option>
-                <option>...</option>
+                <option *ngFor="let equipe of equipes" value={{equipe.id}}>{{equipe.descricao}}</option>
               </select>
             </div>
           </div>

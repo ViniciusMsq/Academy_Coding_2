@@ -33,15 +33,37 @@ class RecursosController extends Controller
         recurso::create($request->all());
     }
 
+    public function getNotGestores(){
+        //return Recurso::all();
+        return DB::table('recursos')
+        ->join('equipes', 'recursos.id_equipe', '=', 'equipes.id')
+        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha')
+        ->where('recursos.id_equipe', '<>', 1)
+        ->orderBy('recursos.nome', 'asc')
+        ->get();
+    }
+
+    public function getGestores(){
+        //return Recurso::all();
+        return DB::table('recursos')
+        ->join('equipes', 'recursos.id_equipe', '=', 'equipes.id')
+        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha')
+        ->where('recursos.id_equipe', '=', 1)
+        ->orderBy('recursos.nome', 'asc')
+        ->get();
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function somando(Request $request, $id)
     {
-        //
+        DB::table('recursos')
+        ->where('recursos.id', '=', $id)
+        ->increment('atividades_concluidas');
     }
 
     /**

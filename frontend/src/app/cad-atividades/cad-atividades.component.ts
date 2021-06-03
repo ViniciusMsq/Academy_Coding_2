@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjetosService } from '../cad-projetos/projetos.service';
+import { RecursosService } from '../cad-recursos/recursos.service';
 import { AtividadeModel } from './atividade.model';
 import { AtividadesService } from './atividades.service';
 
@@ -12,10 +14,31 @@ export class CadAtividadesComponent implements OnInit {
   atividades: Array<any> = new Array();
   atividade: AtividadeModel = new AtividadeModel();
 
-  constructor(private atividadeService: AtividadesService) { }
+  projetos: Array<any> = new Array();
+  recursos: Array<any> = new Array();
+  constructor(private atividadeService: AtividadesService, private recursoService:RecursosService, private projetoService:ProjetosService) { }
 
   ngOnInit(): void {
     this.listarAtividade();
+    this.listarNaoGestores();
+    this.listarProjetos();
+  }
+
+  listarProjetos(){
+    this.projetoService.listarProjetos().subscribe(projetos =>{
+      this.projetos = projetos;
+    }), err => {
+      console.log("erro ao listar projetos", err);
+      
+    }
+  }
+  listarNaoGestores(){
+    this.recursoService.listarNaoGestores().subscribe(recursos =>{
+      this.recursos = recursos;
+    }), err => {
+      console.log("erro ao listar recursos", err);
+      
+    }
   }
 
   listarAtividade(){

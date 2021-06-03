@@ -18,6 +18,7 @@ class Atividade extends Model
         'titulo',
         'descricao',
         'dt_inicial',
-        'dt_entrega'
+        'dt_entrega',
+        'status'
     ];
 }

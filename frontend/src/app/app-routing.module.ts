@@ -14,10 +14,10 @@ const routes: Routes = [
   {path:"login", component: LoginComponent},
   {path:"dashboard", component: DashboardComponent, canActivate:[AuthGuard]},
   {path:"dashboard/:id/:equipe", component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:"cadastrar-equipes", component: CadEquipesComponent},
-  {path:"cadastrar-recursos", component: CadRecursosComponent},
-  {path:"cadastrar-projetos", component: CadProjetosComponent},
-  {path:"cadastrar-atividades", component: CadAtividadesComponent} 
+  {path:"cadastrar-equipes", component: CadEquipesComponent, canActivate:[AuthGuard]},
+  {path:"cadastrar-projetos", component: CadProjetosComponent, canActivate:[AuthGuard]},
+  {path:"cadastrar-recursos", component: CadRecursosComponent, canActivate:[AuthGuard]},
+  {path:"cadastrar-atividades", component: CadAtividadesComponent,canActivate:[AuthGuard]} 
 
 ];
 

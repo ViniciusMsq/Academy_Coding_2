@@ -43,8 +43,7 @@
             <div>
               <label for="projeto" class="form-label">Projeto</label>
               <select id="projeto" name="projeto" class="form-select" [(ngModel)]="atividade.id_projeto">
-                <option value=8 selected>Sem Projeto</option>
-                <option>...</option>
+                <option *ngFor="let projeto of projetos" value={{projeto.id}}>{{projeto.nome}}</option>
               </select>
             </div>
           </div>
@@ -53,8 +52,7 @@
             <div>
               <label for="recurso" class="form-label">Recurso</label>
               <select id="recurso" name="recurso" class="form-select" [(ngModel)]="atividade.id_recurso">
-                <option value=10 selected>Sem Recurso</option>
-                <option>...</option>
+                <option *ngFor="let recurso of recursos" value={{recurso.id}}>{{recurso.nome}}- -{{recurso.descricao}}</option>
               </select>
             </div>
           </div>
@@ -80,6 +78,7 @@
           <th scope="col">Descrição</th>
           <th scope="col">Dt_Inicial</th>
           <th scope="col">DT_Entrega</th>
+          <th scope="col">Status</th>
           <th scope="col">Ações</th>
         </tr>
       </thead>
@@ -91,7 +90,8 @@
           <td>{{atividade.titulo}}</td>
           <td style="width: 35%;">{{atividade.descricao}}</td>
           <td>{{atividade.dt_inicial}}</td>
-          <td>{{atividade.dt_final}}</td>
+          <td>{{atividade.dt_entrega}}</td>
+          <td>{{atividade.status}}</td>
 
           <td class="overflow-hidden"> 
             <div ngbDropdown container="body">

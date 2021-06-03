@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,52 @@
     <title>Dashboard</title>
     <base href="/dashboard">
 </head>
+
 <body class="bg-light">
-    <h1> -> Dashboard</h1>
+    <div class="container" *ngIf="gestor === false">
+        <div class="row" *ngFor="let atividade of atividades" style="margin-top: 3%;">
+            <div class="card text-center" style="border-color: dimgray;">
+                <div class="card-header">
+                    {{atividade.nome}}
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">#{{atividade.id}} - {{atividade.titulo}}</h2>
+                    <p class="card-text">{{atividade.descricao}}</p>
+                    <div class="align-items-center">
+                        <form class="row g-3">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-2">
+                                <label for="estado">Status</label>
+                                <select id="estado" name="{{atividade.id}}"  class="form-select" [(ngModel)]="atividadeAux.status">
+                                    <option value="fazendo" selected>Fazendo</option>
+                                    <option value="pausada">Pausada</option>
+                                    <option value="concluida">Concluida</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5"></div>
+                            <div>
+                                <button class="btn btn-success" style="margin-top: 15px; margin-right: 5px;" (click)="atualizarStatus(atividade.id); atualizarRecursos(idUsuario, atividadeAux.status);">Salvar</button>
+                            </div>
+                         </form>
+                    </div> 
+                </div>
+                <div class="card-footer text-muted">
+                    <p >status: {{atividade.status}}</p>
+                    <p>Inicio: {{atividade.dt_inicial}} &nbsp;&nbsp;&nbsp;&nbsp; Entrega: {{atividade.dt_entrega}}</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div *ngIf="gestor === true">
+
+
+
+
+
+    </div>
+
 </body>
+
 </html>

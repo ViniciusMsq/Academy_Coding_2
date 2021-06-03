@@ -13,6 +13,7 @@ export class AuthService {
 
   private usuarioAutenticado: boolean =false;
   private usuarioGestor: boolean = false;
+  private idUsuario: number;
 
   mostrarBotaoEmitter = new EventEmitter<boolean>();
   mostrarMenuEmitter = new EventEmitter<boolean>();
@@ -27,10 +28,12 @@ export class AuthService {
   listarRecursos(): Observable<any>{
     return this.http.get(`${environment.host}/recursos`);
   }
+  
   fazerLogin(usuario:Usuario, recursos:Array<any>){
     for(let i=0; i< recursos.length; i++){
       if(usuario.login == recursos[i].login && usuario.senha == recursos[i].senha){
         this.usuarioAutenticado = true;
+        this.idUsuario = recursos[i].id;
         
         if(recursos[i].id_equipe === 1){
           this.mostrarBotaoEmitter.emit(true);
@@ -41,12 +44,14 @@ export class AuthService {
         }
 
         this.mostrarMenuEmitter.emit(true);
+        console.log(this.usuarioGestor);
         this.router.navigate(['/dashboard', recursos[i].id, recursos[i].descricao]);
         break;
       }else{
         this.usuarioAutenticado = false;
         this.mostrarMenuEmitter.emit(false);
       }
+
     }
 
     /*if(usuario.login === recursos[this.indice].login && usuario.senha === recursos[this.indice].senha){
@@ -61,6 +66,12 @@ export class AuthService {
     }*/
   }
 
+  usuario_id(){
+    return this.idUsuario;
+  }
+  usuario_gestor(){
+    return this.usuarioGestor;
+  }
   usuarioEstaAutenticado(){
     return this.usuarioAutenticado;
   }

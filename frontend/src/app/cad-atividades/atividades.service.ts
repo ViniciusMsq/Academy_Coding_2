@@ -14,6 +14,9 @@ export class AtividadesService {
   listarAtividades() : Observable<any>{
     return this.http.get(`${environment.host}/atividades`);
   }
+  listarAtividadesRecurso(id:any) : Observable<any>{
+    return this.http.get(`${environment.host}/atividades/`.concat(id));
+  }
   cadastrarAtividade(atividade: AtividadeModel) : Observable<any>{
     return this.http.post(`${environment.host}/atividades`, atividade);
   }
