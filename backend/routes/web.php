@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PdfController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    Mail::send('mail.academy', ['url' => 'http://localhost:8000/pdf'], function($m){
+        $m->from('viniciusm.gc27@gmail.com', 'Vinicius');
+        $m->subject('Gerenciador de atividades');
+        $m->to('canalprogramandofuturo@gmail.com');
+    });
 });
+
+Route::get('pdf', [PdfController::class, 'geraPdf']);
+
+

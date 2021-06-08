@@ -30,4 +30,7 @@ export class RecursosService {
     return this.http.put(`${environment.host}/recursosAtividades/`.concat(id), recurso);
   }
 
+  listarDadosBarchart(): Observable<any>{
+    return this.http.get(`${environment.host}/barchart`);
+  }
 }

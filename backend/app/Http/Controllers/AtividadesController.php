@@ -39,11 +39,17 @@ class AtividadesController extends Controller
     {
         return DB::table('atividades')
         ->join('projetos', 'atividades.id_projeto', '=', 'projetos.id')
-        ->select('atividades.id', 'projetos.nome', 'atividades.titulo', 'atividades.descricao', 'atividades.dt_inicial', 'atividades.dt_entrega', 'atividades.status')
+        ->select('atividades.id', 'projetos.nome', 'atividades.titulo', 'atividades.descricao', 'atividades.dt_inicial', 'atividades.dt_entrega', 'atividades.status', 'atividades.porcentagem')
         ->where('atividades.id_recurso', '=', $id)
         ->orderBy('atividades.status', 'asc')
         ->get();
     }
+
+    public function concluidas(){
+        return DB::table('atividades')
+        ->select()->count();
+        
+    } 
 
     /**
      * Update the specified resource in storage.

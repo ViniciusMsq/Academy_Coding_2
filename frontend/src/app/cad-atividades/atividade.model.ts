@@ -6,4 +6,5 @@ export class AtividadeModel{
     dt_inicial: string;
     dt_entrega: string;
     status:string;
+    porcentagem:string;
 }

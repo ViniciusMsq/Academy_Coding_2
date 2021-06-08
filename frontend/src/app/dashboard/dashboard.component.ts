@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AtividadeModel } from '../cad-atividades/atividade.model';
 import { AtividadesService } from '../cad-atividades/atividades.service';
 import { RecursoModel } from '../cad-recursos/recurso.model';
@@ -85,7 +88,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  enviarEmail(){
+    
+    
+    //this.http.get('http://localhost:8000/api/envio-email');
+    
+    console.log("passou no envio");
 
+    window.open('http://localhost:8000/api/envio-email', '_blank');
+  }
   
 
 }

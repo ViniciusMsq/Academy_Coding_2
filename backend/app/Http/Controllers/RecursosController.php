@@ -18,7 +18,7 @@ class RecursosController extends Controller
         //return Recurso::all();
         return DB::table('recursos')
         ->join('equipes', 'recursos.id_equipe', '=', 'equipes.id')
-        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha')
+        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha','recursos.atividades_concluidas')
         ->orderBy('recursos.nome', 'asc')
         ->get();
     }
@@ -37,7 +37,7 @@ class RecursosController extends Controller
         //return Recurso::all();
         return DB::table('recursos')
         ->join('equipes', 'recursos.id_equipe', '=', 'equipes.id')
-        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha')
+        ->select('recursos.id','recursos.id_equipe','recursos.nome','equipes.descricao','recursos.email','recursos.telefone','recursos.login','recursos.senha', 'recursos.atividades_concluidas')
         ->where('recursos.id_equipe', '<>', 1)
         ->orderBy('recursos.nome', 'asc')
         ->get();
@@ -51,6 +51,14 @@ class RecursosController extends Controller
         ->where('recursos.id_equipe', '=', 1)
         ->orderBy('recursos.nome', 'asc')
         ->get();
+    }
+
+    public function getDadosBarchart(){
+        return DB::table('recursos')
+        ->select('nome', 'atividades_concluidas')
+        ->where('id_equipe', '<>', 1)
+        ->get();
+
     }
 
     /**

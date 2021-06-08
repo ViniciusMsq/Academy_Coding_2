@@ -10,36 +10,65 @@
 </head>
 
 <body class="bg-light">
+    
     <div class="container" *ngIf="gestor === false">
         <div class="row" *ngFor="let atividade of atividades" style="margin-top: 3%;">
-            <div class="card text-center" style="border-color: dimgray;">
-                <div class="card-header">
-                    {{atividade.nome}}
+            <div class="card text-center" style="border-color: dimgray;" >
+                <div class="card-header bg-dark">
+                    <p class="detalhes">{{atividade.nome}}</p>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title">#{{atividade.id}} - {{atividade.titulo}}</h2>
                     <p class="card-text">{{atividade.descricao}}</p>
                     <div class="align-items-center">
-                        <form class="row g-3">
-                            <div class="col-md-5"></div>
-                            <div class="col-md-2">
+                        <form>
+                            
+                            <div style="display: inline-block;">
                                 <label for="estado">Status</label>
-                                <select id="estado" name="{{atividade.id}}"  class="form-select" [(ngModel)]="atividadeAux.status">
-                                    <option value="fazendo" selected>Fazendo</option>
+                                <select id="estado" name="{{atividade.id}}"  class="form-select" [(ngModel)]="atividadeAux.status" style="width: 150px;">
+                                    <option value="fazer" >Fazer</option>
+                                    <option value="fazendo" >Fazendo</option>
                                     <option value="pausada">Pausada</option>
                                     <option value="concluida">Concluida</option>
                                 </select>
                             </div>
-                            <div class="col-md-5"></div>
+                            <div style="display: inline-block; margin-left: 5px;">
+                                <label for="estado">%</label>
+                                <select id="estado" name="{{atividade.id}}"  class="form-select" [(ngModel)]="atividadeAux.porcentagem" style="width: 80px;">
+                                    <option value="0%">0%</option>
+                                    <option value="25%">25%</option>
+                                    <option value="50%">50%</option>
+                                    <option value="75%">75%</option>
+                                    <option value="100%">100%</option>
+
+                                </select>
+                            </div>
                             <div>
-                                <button class="btn btn-success" style="margin-top: 15px; margin-right: 5px;" (click)="atualizarStatus(atividade.id); atualizarRecursos(idUsuario, atividadeAux.status);">Salvar</button>
+                                <button class="btn btn-success" style="margin-top: 15px; margin-right: 5px; background-color: #9fe803 !important; color: black !important;" (click)="atualizarStatus(atividade.id); atualizarRecursos(idUsuario, atividadeAux.status);">Salvar</button>
                             </div>
                          </form>
+                         
                     </div> 
                 </div>
-                <div class="card-footer text-muted">
-                    <p >status: {{atividade.status}}</p>
-                    <p>Inicio: {{atividade.dt_inicial}} &nbsp;&nbsp;&nbsp;&nbsp; Entrega: {{atividade.dt_entrega}}</p>
+                
+                <div class="progress" style="margin: 10px 200px;" *ngIf="atividade.porcentagem == '0%'">
+                    <div class="progress-bar" role="progressbar" style="width: 0%; background-color: #9fe803;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress" style="margin: 10px 200px;" *ngIf="atividade.porcentagem == '25%'">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%; background-color: #9fe803;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress" style="margin: 10px 200px;" *ngIf="atividade.porcentagem == '50%'">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%; background-color: #9fe803;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress" style="margin: 10px 200px;" *ngIf="atividade.porcentagem == '75%'">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%; background-color: #9fe803;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress" style="margin: 10px 200px;" *ngIf="atividade.porcentagem == '100%'">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%; background-color: #9fe803;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="card-footer text-muted ">
+                    <p >status: {{atividade.status}}- {{atividade.porcentagem}}</p>
+                    <p >Inicio: {{atividade.dt_inicial}} &nbsp;&nbsp;&nbsp;&nbsp; Entrega: {{atividade.dt_entrega}}</p>
                 </div>
             </div>
             
@@ -48,9 +77,19 @@
 
     <div *ngIf="gestor === true">
 
-
-
-
+        <div class="d-flex justify-content-center" style="margin-top: 3%;">
+            <button class="btn btn-dark" (click)="enviarEmail()">Enviar Relatorio</button>
+        </div>
+        <div class="row g-3" style="margin: 5%;">
+            
+            <div class="col-6">
+                <app-bar-chart></app-bar-chart>
+            </div>
+            <div class="col-6">
+                <app-donut-chart></app-donut-chart>
+            </div>
+            
+        </div>
 
     </div>
 

@@ -22,6 +22,7 @@ import { CadProjetosComponent } from './cad-projetos/cad-projetos.component';
 import { CadAtividadesComponent } from './cad-atividades/cad-atividades.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { DonutChartComponent } from './donut-chart/donut-chart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     CadEquipesComponent,
     CadProjetosComponent,
     CadAtividadesComponent,
-    BarChartComponent
+    BarChartComponent,
+    DonutChartComponent
   ],
   imports: [
     BrowserModule,

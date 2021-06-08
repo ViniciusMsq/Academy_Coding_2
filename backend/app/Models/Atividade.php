@@ -19,6 +19,7 @@ class Atividade extends Model
         'descricao',
         'dt_inicial',
         'dt_entrega',
-        'status'
+        'status',
+        'porcentagem'
     ];
 }
