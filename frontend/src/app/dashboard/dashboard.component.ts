@@ -98,5 +98,14 @@ export class DashboardComponent implements OnInit {
     window.open('http://localhost:8000/api/envio-email', '_blank');
   }
   
+  validadeData(dataf:string){
+    var hoje = new Date();
+    var entrega = new Date(dataf);
 
+    const diff = (entrega.getTime() - hoje.getTime());
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    console.log(days);
+    return days;
+  }
 }

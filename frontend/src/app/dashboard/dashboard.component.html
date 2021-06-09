@@ -69,6 +69,19 @@
                 <div class="card-footer text-muted ">
                     <p >status: {{atividade.status}}- {{atividade.porcentagem}}</p>
                     <p >Inicio: {{atividade.dt_inicial}} &nbsp;&nbsp;&nbsp;&nbsp; Entrega: {{atividade.dt_entrega}}</p>
+                    <div *ngIf="validadeData(atividade.dt_entrega)<=3 && validadeData(atividade.dt_entrega)>=1 && atividade.status != 'concluida'">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Atenção</strong> Seu prazo está próximo, evite atrasar as atividades!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div *ngIf="validadeData(atividade.dt_entrega)<=0 && atividade.status != 'concluida'"> 
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Atenção</strong> Seu prazo esgotou, atividade atrasada! Entregue a atividade.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
