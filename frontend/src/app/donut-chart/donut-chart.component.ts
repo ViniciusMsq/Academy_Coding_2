@@ -17,7 +17,25 @@ export class DonutChartComponent implements OnInit {
     plotOptions: {
       pie: {
         donut: {
-          size: '65'
+          size: '65',
+          labels:{
+            show:false,
+            total: {
+              show: false,
+              showAlways: false,
+              label: 'Total',
+              fontSize: '22px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 600,
+              color: '#373d3f',
+              formatter: function (w) {
+                return w.globals.seriesTotals.reduce((a, b) => {
+                  return a + b
+                }, 0)
+              }
+            }
+          }
+          
         }
       }
     }
@@ -58,7 +76,24 @@ export class DonutChartComponent implements OnInit {
         plotOptions: {
           pie: {
             donut: {
-              size: '65'
+              size: '65',
+              labels: {
+                show:true,
+                total: {
+                  show: true,
+                  showAlways: false,
+                  label: 'Total',
+                  fontSize: '22px',
+                  fontFamily: 'Helvetica, Arial, sans-serif',
+                  fontWeight: 600,
+                  color: '#373d3f',
+                  formatter: function (w) {
+                    return w.globals.seriesTotals.reduce((a, b) => {
+                      return a + b
+                    }, 0)
+                  }
+                }
+              }
             }
           }
         }

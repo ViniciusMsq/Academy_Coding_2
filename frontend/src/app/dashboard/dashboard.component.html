@@ -88,18 +88,33 @@
         </div>
     </div>
 
+
+
     <div *ngIf="gestor === true">
 
         <div class="d-flex justify-content-center" style="margin-top: 3%;">
             <button class="btn btn-dark" (click)="enviarEmail()">Enviar Relatorio</button>
         </div>
-        <div class="row g-3" style="margin: 5%;">
+        <div style="margin: 5%;">
             
-            <div class="col-6">
-                <app-bar-chart></app-bar-chart>
+            <div>
+                <h1>Gráficos em pizza</h1>
+                <div style="width: 500px;display: inline-block; margin-right: 10rem;">
+                   <p> É um tipo de gráfico, também muito utilizado, indicado para expressar uma relação de proporcionalidade, em que todos os dados somados compõem o todo de um dado aspecto da realidade.</p>
+                </div>
+                <div style="width: 500px; height: 500px; display: inline-block;">
+                    <app-donut-chart></app-donut-chart>
+                </div>
             </div>
-            <div class="col-6">
-                <app-donut-chart></app-donut-chart>
+
+            <div>
+                <h1 style="display: flex; justify-content: center;">Gráficos de coluna</h1>
+                <div>
+                    <p> Juntamente aos gráficos em barra, são os mais utilizados. Indicam, geralmente, um dado quantitativo sobre diferentes variáveis, lugares ou setores e não dependem de proporções. Os dados são indicados na posição vertical, enquanto as divisões qualitativas apresentam-se na posição horizontal.</p>
+                 </div>
+                <div>
+                    <app-bar-chart></app-bar-chart>
+                </div>
             </div>
             
         </div>
