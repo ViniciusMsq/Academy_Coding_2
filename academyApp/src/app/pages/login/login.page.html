@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div style="background-color: #9fe803; height: 5px;">
+  &nbsp;
+</div>
+<ion-content>
+  <div style="text-align: center;">
+    <div 
+      style="display: inline-block;"
+    >
+      <ion-img  src="../../../assets/security.png" style="height: 200px; width: 200px; margin-top: 15px;"></ion-img>
+      
+    </div>
+    <ion-title>Por favor faça o seu login</ion-title>
+      <form style="margin: 10%;">
+        <ion-input  type="text" id="login" name="login" class="form-control" placeholder="Login" autofocus="" [(ngModel)]="usuario.login"></ion-input>
+        <ion-input style="margin-top: 10px;" type="password" id="senha" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha"></ion-input>
+        
+        <ion-button style="margin-top: 10px;" color="success" type="submit" (click)="fazerLogin()">Entrar</ion-button>
+      </form>
+  </div>
+</ion-content>

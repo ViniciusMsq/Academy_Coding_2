@@ -69,13 +69,13 @@
                 <div class="card-footer text-muted ">
                     <p >status: {{atividade.status}}- {{atividade.porcentagem}}</p>
                     <p >Inicio: {{atividade.dt_inicial}} &nbsp;&nbsp;&nbsp;&nbsp; Entrega: {{atividade.dt_entrega}}</p>
-                    <div *ngIf="validadeData(atividade.dt_entrega)<=3 && validadeData(atividade.dt_entrega)>=1 && atividade.status != 'concluida'">
+                    <div *ngIf="validadeData(atividade.dt_entrega)<=3 && validadeData(atividade.dt_entrega)>0 && atividade.status != 'concluida'">
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Atenção</strong> Seu prazo está próximo, evite atrasar as atividades!
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     </div>
-                    <div *ngIf="validadeData(atividade.dt_entrega)<=0 && atividade.status != 'concluida'"> 
+                    <div *ngIf="validadeData(atividade.dt_entrega)<0 && atividade.status != 'concluida'"> 
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Atenção</strong> Seu prazo esgotou, atividade atrasada! Entregue a atividade.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -98,9 +98,14 @@
         <div style="margin: 5%;">
             
             <div>
-                <h1>Gráficos em pizza</h1>
+                
                 <div style="width: 500px;display: inline-block; margin-right: 10rem;">
-                   <p> É um tipo de gráfico, também muito utilizado, indicado para expressar uma relação de proporcionalidade, em que todos os dados somados compõem o todo de um dado aspecto da realidade.</p>
+                    <h1>Gráficos Donut</h1>
+                    <p>Utilize o gráfico ao lado para se informar sobre as situações das tarefas, fique por dentro da taxa de tarefas concluidas e tarefas paradas para avaliar o andamento do projeto. </p>
+                    <p>Curiosidade:</p>
+                    <p> É um tipo de gráfico, também muito utilizado, indicado para expressar uma relação de proporcionalidade, em que todos os dados somados compõem o todo de um dado aspecto da realidade.</p>
+                    
+
                 </div>
                 <div style="width: 500px; height: 500px; display: inline-block;">
                     <app-donut-chart></app-donut-chart>
@@ -110,8 +115,11 @@
             <div>
                 <h1 style="display: flex; justify-content: center;">Gráficos de coluna</h1>
                 <div>
+                    <p>Utilize o gráfico abaixo para avaliar os maiores contribuidores dos projetos, aqui consegue ver quem mais conclui atividades, e poderá salvar esse grafico para uma analise evolutiva</p>
+                    <p>Curiosidade:</p>
                     <p> Juntamente aos gráficos em barra, são os mais utilizados. Indicam, geralmente, um dado quantitativo sobre diferentes variáveis, lugares ou setores e não dependem de proporções. Os dados são indicados na posição vertical, enquanto as divisões qualitativas apresentam-se na posição horizontal.</p>
-                 </div>
+                    
+                </div>
                 <div>
                     <app-bar-chart></app-bar-chart>
                 </div>

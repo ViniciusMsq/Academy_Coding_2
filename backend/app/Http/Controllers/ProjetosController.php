@@ -15,7 +15,11 @@ class ProjetosController extends Controller
      */
     public function index()
     {
-        return Projeto::all();
+        //return Projeto::all();
+        return DB::table('projetos')
+        ->select('*')
+        ->orderBy('projetos.nome', 'asc')
+        ->get();
     }
 
     /**

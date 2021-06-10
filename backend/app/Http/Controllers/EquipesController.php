@@ -15,7 +15,11 @@ class EquipesController extends Controller
      */
     public function index()
     {
-        return Equipe::all();
+        //return Equipe::all();
+        return DB::table('equipes')
+        ->select('*')
+        ->orderBy('equipes.descricao', 'asc')
+        ->get();
     }
 
     /**

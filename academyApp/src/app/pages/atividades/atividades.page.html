@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-title style="text-align: center; margin-bottom: 5px;">Suas Atividades</ion-title>
+  </ion-toolbar>
+  <div style="background-color: #9fe803; height: 5px;">
+    &nbsp;
+</div>
+</ion-header>
+
+
+<ion-content style="text-align: center;"> 
+
+  <ion-card style="text-align: center; border-radius: 25px;" *ngFor="let atividade of atividades">
+    <ion-card-content>
+      <ion-card-subtitle>{{atividade.nome}}</ion-card-subtitle>
+      
+      <ion-card-title>{{atividade.titulo}}</ion-card-title>
+      
+      <p>{{atividade.status}}</p>
+    
+    </ion-card-content>
+  </ion-card>
+</ion-content>

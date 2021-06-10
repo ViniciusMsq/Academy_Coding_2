@@ -57,6 +57,7 @@ class RecursosController extends Controller
         return DB::table('recursos')
         ->select('nome', 'atividades_concluidas')
         ->where('id_equipe', '<>', 1)
+        ->orderBy('recursos.nome', 'asc')
         ->get();
 
     }

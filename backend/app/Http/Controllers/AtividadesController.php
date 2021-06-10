@@ -15,7 +15,11 @@ class AtividadesController extends Controller
      */
     public function index()
     {
-        return Atividade::all();
+        //return Atividade::all();
+        return DB::table('atividades')
+        ->select('*')
+        ->orderBy('atividades.id_projeto')
+        ->get();
     }
 
     /**
