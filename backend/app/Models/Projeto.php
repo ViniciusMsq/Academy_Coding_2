@@ -12,6 +12,7 @@ class Projeto extends Model
     protected $primaryKey = 'id';
     use HasFactory;
 
+    //campos referente a tabela
     protected $fillable = [
         'id_recurso',
         'nome',

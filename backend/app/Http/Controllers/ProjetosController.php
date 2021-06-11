@@ -16,6 +16,8 @@ class ProjetosController extends Controller
     public function index()
     {
         //return Projeto::all();
+
+        //retornando todos os dados da tabela projetos, ordendando pelo nome
         return DB::table('projetos')
         ->select('*')
         ->orderBy('projetos.nome', 'asc')
@@ -30,6 +32,7 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
+        //salvando dados na tabela projeto
         Projeto::create($request->all());
     }
 
@@ -54,6 +57,7 @@ class ProjetosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //atualizando dados da tabela projetos
         Projeto::findOrFail($id)->update($request->all());
     }
 
@@ -65,6 +69,7 @@ class ProjetosController extends Controller
      */
     public function destroy($id)
     {
+        //deletando projetos, e suas relações com as atividades
         DB::table('atividades')
         ->where('id_projeto','=',$id)
         ->delete();

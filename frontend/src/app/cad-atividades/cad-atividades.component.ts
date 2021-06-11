@@ -11,18 +11,32 @@ import { AtividadesService } from './atividades.service';
 })
 export class CadAtividadesComponent implements OnInit {
 
+  //criando array para receber dados da api
   atividades: Array<any> = new Array();
+  //model para receber dados da pagina
   atividade: AtividadeModel = new AtividadeModel();
 
   projetos: Array<any> = new Array();
   recursos: Array<any> = new Array();
   constructor(private atividadeService: AtividadesService, private recursoService:RecursosService, private projetoService:ProjetosService) { }
-
+  
+  //metodo executado na inicialização
   ngOnInit(): void {
     this.listarAtividade();
     this.listarNaoGestores();
     this.listarProjetos();
   }
+  
+  //listanddo todas as atividades
+  listarAtividade(){
+    this.atividadeService.listarAtividades().subscribe(atividades =>{
+      this.atividades = atividades;
+    }), err => {
+      console.log("erro ao listar atividade", err);
+      
+    }
+  }
+
 
   listarProjetos(){
     this.projetoService.listarProjetos().subscribe(projetos =>{
@@ -41,17 +55,9 @@ export class CadAtividadesComponent implements OnInit {
     }
   }
 
-  listarAtividade(){
-    this.atividadeService.listarAtividades().subscribe(atividades =>{
-      this.atividades = atividades;
-    }), err => {
-      console.log("erro ao listar atividade", err);
-      
-    }
-  }
 
+  //cadastro das atividades
   cadastrar(){
-
     this.atividadeService.cadastrarAtividade(this.atividade).subscribe(atividade =>{
       this.atividade = new AtividadeModel();
       this.listarAtividade();
@@ -60,6 +66,7 @@ export class CadAtividadesComponent implements OnInit {
     })
   }
 
+  //atualização das atividades
   atualizar(id:Number){
     this.atividadeService.atualizarAtividade(id, this.atividade).subscribe(atividade =>{
       this.atividade = new AtividadeModel();

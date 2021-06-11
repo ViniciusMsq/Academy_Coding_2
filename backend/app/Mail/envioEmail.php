@@ -34,7 +34,5 @@ class envioEmail extends Mailable
         $this->to($this->user->email, $this->user->nome);
 
         return $this->markdown('mail.envioEmail', ['user' => $this->user]);
-
-        
     }
 }

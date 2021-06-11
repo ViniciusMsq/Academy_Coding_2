@@ -19,7 +19,7 @@ export class AtividadesPage implements OnInit {
     this.listarAtividadeIdUser();
     
   }
-
+  
   listarAtividadeIdUser(){
     this.atividadeService.listarAtividadesRecurso(this.idUsuario).subscribe(atividades =>{
       this.atividades = atividades;

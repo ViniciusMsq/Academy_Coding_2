@@ -11,15 +11,20 @@ export class AtividadesService {
 
   constructor(private http: HttpClient) { }
 
+  //acessando rotas da API utilizando o http
+  //buscando todas as atividades
   listarAtividades() : Observable<any>{
     return this.http.get(`${environment.host}/atividades`);
   }
+  //buscando todas as atividades do recurso pelo id do recurso
   listarAtividadesRecurso(id:any) : Observable<any>{
     return this.http.get(`${environment.host}/atividades/`.concat(id));
   }
+  //cadastrando atividades no banco
   cadastrarAtividade(atividade: AtividadeModel) : Observable<any>{
     return this.http.post(`${environment.host}/atividades`, atividade);
   }
+  //atualizando atividade no banco
   atualizarAtividade(id: any, atividade:AtividadeModel): Observable<any>{
     return this.http.put(`${environment.host}/atividades/`.concat(id), atividade);
   }
